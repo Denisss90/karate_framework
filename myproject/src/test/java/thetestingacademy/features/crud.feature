@@ -76,6 +76,26 @@ Scenario: Create a place
     Then match response.address == updatedAddress
     * print "The address in response is ", response.address
 
+# 5. Delete the point that we created
+    Given path "delete/json"
+    Given header Content-Type = "application/json"
+    And param "key" = "qaclick123"
+    And request
+    """
+        {
+        "place_id": '#(responsePlaceId)'
+        }
+    """
+    When method Post
+    Then status 200
+    Then match response.status == 'OK'
 
+# 6. Check that the point i deleted
+    Given path "get/json"
+    And param key = 'qaclick123'
+    And param place_id = responsePlaceId
+    When method Get
+    Then status 404
+    Then match response.msg == "Get operation failed, looks like place_id  doesn't exists"
 
 
