@@ -1,10 +1,10 @@
 Feature: try to automate CRUD via karate framework
 
 Background: Set url
-    * url "https://rahulshettyacademy.com/maps/api/place/json"
+    * url "https://rahulshettyacademy.com/maps/api/place/"
 
 Scenario: Create a palce
-    Given path "add"
+    Given path "add/json"
     Given header Content-Type = "application/json"
     And param "key" = "qaclick123"
     And request
