@@ -30,4 +30,3 @@ Scenario: Create a palce
     * def responsePlaceId=response.place_id
 
 
-Scenario
