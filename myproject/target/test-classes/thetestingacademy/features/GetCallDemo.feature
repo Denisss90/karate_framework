@@ -10,7 +10,7 @@ Feature: Get the details of User 2
 
     Scenario: Create a person
         Given path "/users"
-        Given def expectedName="denysLebedev"
+        Given def expectedName = "denysLebedev"
         And request
         """
         {
