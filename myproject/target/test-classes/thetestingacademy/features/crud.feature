@@ -47,6 +47,8 @@ Scenario: Create a place
 
 
 # 3. Update a point on the map
+    * def updatedAddress = 'New Year streat, USA'
+
     Given path "update/json"
     Given header Content-Type = "application/json"
     And param "key" = "qaclick123"
@@ -55,7 +57,7 @@ Scenario: Create a place
     """
         {
         "place_id": '#(responsePlaceId)',
-        "address":"New Year streat, USA",
+        "address": '#(updatedAddress)',
         "key":"qaclick123"
         }
     """
@@ -63,6 +65,16 @@ Scenario: Create a place
     Then status 200
     Then match response == "#object"
     Then match response.msg == "Address successfully updated"
+
+# 4. Get the point after update address and check the address
+
+    Given path "get/json"
+    And param key = 'qaclick123'
+    And param place_id = responsePlaceId
+    When method Get
+    Then status 200
+    Then match response.address == updatedAddress
+    * print "The address in response is ", response.address
 
 
 
