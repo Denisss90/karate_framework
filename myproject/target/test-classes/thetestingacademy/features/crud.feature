@@ -33,15 +33,15 @@ Scenario: Create a place
     Then match response.scope == "APP"
 
     * def responsePlaceId = response.place_id
-    * def responseAddress = response.address
+    * def expectedResponseAddress = '29, side layout, cohen 09'
 
 # 2. Get the point from the map
     Given path "get/json"
-    And param "key" = "qaclick123"
-    And param "place_id" = responsePlaceId
+    And param key = 'qaclick123'
+    And param place_id = responsePlaceId
     When method Get
     Then status 200
-    Then match response.address == responseAddress
+    Then match response.address == expectedResponseAddress
     * print "The address in response is ", response.address
 
 
