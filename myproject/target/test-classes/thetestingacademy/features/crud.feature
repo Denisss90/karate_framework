@@ -47,7 +47,6 @@ Scenario: Create a place
 
 
 # 3. Update a point on the map
-Scenario: Create a place
     Given path "update/json"
     Given header Content-Type = "application/json"
     And param "key" = "qaclick123"
