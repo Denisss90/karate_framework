@@ -90,7 +90,7 @@ Scenario: Create a place
     Then status 200
     Then match response.status == 'OK'
 
-# 6. Check that the point i deleted
+# 6. Check that the point is deleted
     Given path "get/json"
     And param key = 'qaclick123'
     And param place_id = responsePlaceId
