@@ -1,7 +1,7 @@
 Feature: try to automate CRUD via karate framework
 
 Background: Set url
-    * url "https://rahulshettyacademy.com/maps/api/place/"
+    * url "https://rahulshettyacademy.com/maps/api/place/json"
 
 Scenario: Create a palce
     Given path "add"
