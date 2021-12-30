@@ -3,7 +3,8 @@ Feature: try to automate CRUD via karate framework
 Background: Set url
     * url "https://rahulshettyacademy.com/maps/api/place/"
 
-Scenario: Create a palce
+# 1. Create a point on the map
+Scenario: Create a place
     Given path "add/json"
     Given header Content-Type = "application/json"
     And param "key" = "qaclick123"
@@ -15,7 +16,7 @@ Scenario: Create a palce
             "lng": 33.427362
         },
         "accuracy": 50,
-        "name": "Denys house",
+        "name": "Denys house in Kiev",
         "phone_number": "(+91) 983 893 3937",
         "address": "29, side layout, cohen 09",
         "types": [
@@ -33,6 +34,15 @@ Scenario: Create a palce
 
     * def responsePlaceId = response.place_id
     * def responseAddress = response.address
+
+# 2. Get the point from the map
+    Given path "get/json"
+    And param "key" = "qaclick123"
+    And param "place_id" = "responsePlaceId"
+    When method Get
+    Then status 200
+    Then match response.address == responseAddress
+
 
 
 
