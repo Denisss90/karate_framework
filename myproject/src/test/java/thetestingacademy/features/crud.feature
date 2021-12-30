@@ -27,8 +27,12 @@ Scenario: Create a palce
         }
     """
     When method Post
-    Then match status 200
+    Then status 200
+    Then match response == "#object"
+    Then match response.scope == "APP"
 
-    * def responsePlaceId=response.place_id
+    * def responsePlaceId = response.place_id
+    * def responseAddress = response.address
+
 
 
