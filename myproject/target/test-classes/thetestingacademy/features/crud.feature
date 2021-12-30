@@ -5,7 +5,7 @@ Background: Set url
 
 Scenario: Create a palce
     Given path "add"
-    And reqres
+    And request
     """
         {
         "location": {
@@ -26,6 +26,8 @@ Scenario: Create a palce
     """
     When method Post
     Then match status 200
+
+    * def responsePlaceId=response.place_id
 
 
 Scenario
