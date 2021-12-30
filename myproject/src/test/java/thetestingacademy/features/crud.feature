@@ -5,6 +5,7 @@ Background: Set url
 
 Scenario: Create a palce
     Given path "add"
+    Given header Content-Type = "application/json"
     And param "key" = "qaclick123"
     And request
     """
