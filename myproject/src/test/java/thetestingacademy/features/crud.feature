@@ -38,7 +38,7 @@ Scenario: Create a place
 # 2. Get the point from the map
     Given path "get/json"
     And param "key" = "qaclick123"
-    And param "place_id" = "responsePlaceId"
+    And param "place_id" = responsePlaceId
     When method Get
     Then status 200
     Then match response.address == responseAddress
