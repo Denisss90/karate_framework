@@ -46,5 +46,25 @@ Scenario: Create a place
     * print "The address in response is ", response.address
 
 
+# 3. Update a point on the map
+Scenario: Create a place
+    Given path "update/json"
+    Given header Content-Type = "application/json"
+    And param "key" = "qaclick123"
+    And param place_id = responsePlaceId
+    And request
+    """
+        {
+        "place_id": responsePlaceId,
+        "address":"New Year streat, USA",
+        "key":"qaclick123"
+        }
+    """
+    When method Put
+    Then status 200
+    Then match response == "#object"
+    Then match response.msg == "Address successfully updated"
+
+
 
 
