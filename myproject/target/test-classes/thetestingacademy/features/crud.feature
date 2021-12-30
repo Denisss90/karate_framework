@@ -42,6 +42,7 @@ Scenario: Create a place
     When method Get
     Then status 200
     Then match response.address == expectedResponseAddress
+    Then match response.address == "#notnull"
     * print "The address in response is ", response.address
 
 
