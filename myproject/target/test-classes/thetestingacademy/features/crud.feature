@@ -54,7 +54,7 @@ Scenario: Create a place
     And request
     """
         {
-        "place_id": responsePlaceId,
+        "place_id": '#(responsePlaceId)',
         "address":"New Year streat, USA",
         "key":"qaclick123"
         }
