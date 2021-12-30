@@ -8,7 +8,6 @@ Feature: Get the details of User 2
         When method Get
         Then status 200
 
-    @debug2
     Scenario: Create a person
         Given path "/users"
         And request
@@ -19,6 +18,14 @@ Feature: Get the details of User 2
         }
         """
         When method Post
-        Then status 202
-        Then match respose.name == "denysLebedev"
+        Then status 201
+        Then match response.name == "denysLebedev"
+
+        @debug2
+    Scenario: Get a list of users
+        Given path "/users"
+        And param "page" = "2"
+        When method Get
+        Then status 200
+        Then match response.total == 12
 
